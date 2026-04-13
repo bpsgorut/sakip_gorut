@@ -12,7 +12,34 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // First, update existing data to match enum values
+        if (!Schema::hasTable('pengguna')) {
+            return;
+        }
+
+        if (!Schema::hasColumn('pengguna', 'bidang')) {
+            Schema::table('pengguna', function (Blueprint $table) {
+                $table->string('bidang')->nullable()->after('jabatan');
+            });
+        }
+
+        $allowedJabatan = [
+            'Kepala BPS',
+            'Kasubag Umum',
+            'Ketua Tim',
+            'Anggota Tim',
+        ];
+
+        $allowedBidang = [
+            'Tim Humas dan Reformasi Birokrasi',
+            'Tim Statistik Sosial',
+            'Tim Pengolahan Teknologi Informasi dan Diseminasi',
+            'Tim Sensus, Pengembangan Survei, Manajemen Lapangan dan Mitra',
+            'Tim Statistik Produksi',
+            'Tim Statistik Distribusi, KTIP, dan Harga',
+            'Tim Pembinaan Statistik Sektoral dan Penilai Badan (EPSS)',
+            'Bagian Umum',
+        ];
+
         $jabatanMapping = [
             'Kepala Sub Bagian Umum' => 'Kasubag Umum',
             'kepala sub bagian umum' => 'Kasubag Umum',
@@ -29,52 +56,45 @@ return new class extends Migration
             'Tim Neraca Wilayah Analisis Statistik dan Penjaminan Kualitas' => 'Tim Statistik Sosial',
         ];
         
-        // Update jabatan values
         foreach ($jabatanMapping as $old => $new) {
             DB::table('pengguna')
                 ->where('jabatan', $old)
                 ->update(['jabatan' => $new]);
         }
         
-        // Update bidang values
-        foreach ($bidangMapping as $old => $new) {
-            DB::table('pengguna')
-                ->where('bidang', $old)
-                ->update(['bidang' => $new]);
-        }
-        
-        // Set default values for null or empty jabatan
         DB::table('pengguna')
             ->whereNull('jabatan')
             ->orWhere('jabatan', '')
             ->update(['jabatan' => 'Anggota Tim']);
-            
-        // Set default values for null or empty bidang
+
         DB::table('pengguna')
-            ->whereNull('bidang')
-            ->orWhere('bidang', '')
-            ->update(['bidang' => 'Bagian Umum']);
-        
-        // Now modify the table structure
-        Schema::table('pengguna', function (Blueprint $table) {
-            $table->enum('jabatan', [
-                'Kepala BPS',
-                'Kasubag Umum', 
-                'Ketua Tim',
-                'Anggota Tim'
-            ])->default('Anggota Tim')->change();
-            
-            $table->enum('bidang', [
-                'Tim Humas dan Reformasi Birokrasi',
-                'Tim Statistik Sosial',
-                'Tim Pengolahan Teknologi Informasi dan Diseminasi',
-                'Tim Sensus, Pengembangan Survei, Manajemen Lapangan dan Mitra',
-                'Tim Statistik Produksi',
-                'Tim Statistik Distribusi, KTIP, dan Harga',
-                'Tim Pembinaan Statistik Sektoral dan Penilai Badan (EPSS)',
-                'Bagian Umum'
-            ])->default('Bagian Umum')->change();
-        });
+            ->whereNotIn('jabatan', $allowedJabatan)
+            ->update(['jabatan' => 'Anggota Tim']);
+
+        if (Schema::hasColumn('pengguna', 'bidang')) {
+            foreach ($bidangMapping as $old => $new) {
+                DB::table('pengguna')
+                    ->where('bidang', $old)
+                    ->update(['bidang' => $new]);
+            }
+
+            DB::table('pengguna')
+                ->whereNull('bidang')
+                ->orWhere('bidang', '')
+                ->update(['bidang' => 'Bagian Umum']);
+
+            DB::table('pengguna')
+                ->whereNotIn('bidang', $allowedBidang)
+                ->update(['bidang' => 'Bagian Umum']);
+        }
+
+        $driver = DB::getDriverName();
+        if (in_array($driver, ['mysql', 'mariadb'], true)) {
+            DB::statement("ALTER TABLE `pengguna` MODIFY `jabatan` ENUM('Kepala BPS','Kasubag Umum','Ketua Tim','Anggota Tim') NOT NULL DEFAULT 'Anggota Tim'");
+            if (Schema::hasColumn('pengguna', 'bidang')) {
+                DB::statement("ALTER TABLE `pengguna` MODIFY `bidang` ENUM('Tim Humas dan Reformasi Birokrasi','Tim Statistik Sosial','Tim Pengolahan Teknologi Informasi dan Diseminasi','Tim Sensus, Pengembangan Survei, Manajemen Lapangan dan Mitra','Tim Statistik Produksi','Tim Statistik Distribusi, KTIP, dan Harga','Tim Pembinaan Statistik Sektoral dan Penilai Badan (EPSS)','Bagian Umum') NOT NULL DEFAULT 'Bagian Umum'");
+            }
+        }
     }
 
     /**
@@ -82,9 +102,18 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('pengguna', function (Blueprint $table) {
-            $table->string('jabatan')->nullable()->change();
-            $table->string('bidang')->nullable()->change();
-        });
+        if (!Schema::hasTable('pengguna')) {
+            return;
+        }
+
+        $driver = DB::getDriverName();
+        if (in_array($driver, ['mysql', 'mariadb'], true)) {
+            if (Schema::hasColumn('pengguna', 'jabatan')) {
+                DB::statement("ALTER TABLE `pengguna` MODIFY `jabatan` VARCHAR(255) NULL");
+            }
+            if (Schema::hasColumn('pengguna', 'bidang')) {
+                DB::statement("ALTER TABLE `pengguna` MODIFY `bidang` VARCHAR(255) NULL");
+            }
+        }
     }
 };

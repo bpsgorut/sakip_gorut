@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -11,12 +12,27 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('realisasi_fra', function (Blueprint $table) {
-            $table->text('kendala')->nullable()->change();
-            $table->text('solusi')->nullable()->change();
-            $table->text('tindak_lanjut')->nullable()->change();
-            $table->date('batas_waktu_tindak_lanjut')->nullable()->change();
-        });
+        if (!Schema::hasTable('realisasi_fra')) {
+            return;
+        }
+
+        $driver = DB::getDriverName();
+        if (!in_array($driver, ['mysql', 'mariadb'], true)) {
+            return;
+        }
+
+        if (Schema::hasColumn('realisasi_fra', 'kendala')) {
+            DB::statement("ALTER TABLE `realisasi_fra` MODIFY `kendala` TEXT NULL");
+        }
+        if (Schema::hasColumn('realisasi_fra', 'solusi')) {
+            DB::statement("ALTER TABLE `realisasi_fra` MODIFY `solusi` TEXT NULL");
+        }
+        if (Schema::hasColumn('realisasi_fra', 'tindak_lanjut')) {
+            DB::statement("ALTER TABLE `realisasi_fra` MODIFY `tindak_lanjut` TEXT NULL");
+        }
+        if (Schema::hasColumn('realisasi_fra', 'batas_waktu_tindak_lanjut')) {
+            DB::statement("ALTER TABLE `realisasi_fra` MODIFY `batas_waktu_tindak_lanjut` DATE NULL");
+        }
     }
 
     /**
@@ -24,11 +40,26 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('realisasi_fra', function (Blueprint $table) {
-            $table->text('kendala')->nullable(false)->change();
-            $table->text('solusi')->nullable(false)->change();
-            $table->text('tindak_lanjut')->nullable(false)->change();
-            $table->date('batas_waktu_tindak_lanjut')->nullable(false)->change();
-        });
+        if (!Schema::hasTable('realisasi_fra')) {
+            return;
+        }
+
+        $driver = DB::getDriverName();
+        if (!in_array($driver, ['mysql', 'mariadb'], true)) {
+            return;
+        }
+
+        if (Schema::hasColumn('realisasi_fra', 'kendala')) {
+            DB::statement("ALTER TABLE `realisasi_fra` MODIFY `kendala` TEXT NOT NULL");
+        }
+        if (Schema::hasColumn('realisasi_fra', 'solusi')) {
+            DB::statement("ALTER TABLE `realisasi_fra` MODIFY `solusi` TEXT NOT NULL");
+        }
+        if (Schema::hasColumn('realisasi_fra', 'tindak_lanjut')) {
+            DB::statement("ALTER TABLE `realisasi_fra` MODIFY `tindak_lanjut` TEXT NOT NULL");
+        }
+        if (Schema::hasColumn('realisasi_fra', 'batas_waktu_tindak_lanjut')) {
+            DB::statement("ALTER TABLE `realisasi_fra` MODIFY `batas_waktu_tindak_lanjut` DATE NOT NULL");
+        }
     }
 };

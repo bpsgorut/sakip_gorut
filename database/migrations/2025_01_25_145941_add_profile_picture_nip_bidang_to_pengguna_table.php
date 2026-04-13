@@ -11,10 +11,28 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('pengguna', function (Blueprint $table) {
-            $table->string('profile_picture')->nullable()->after('jabatan');
-            $table->string('nip')->nullable()->after('name');
-            $table->string('bidang')->nullable()->after('jabatan');
+        if (!Schema::hasTable('pengguna')) {
+            return;
+        }
+
+        $addProfilePicture = !Schema::hasColumn('pengguna', 'profile_picture');
+        $addNip = !Schema::hasColumn('pengguna', 'nip');
+        $addBidang = !Schema::hasColumn('pengguna', 'bidang');
+
+        if (!($addProfilePicture || $addNip || $addBidang)) {
+            return;
+        }
+
+        Schema::table('pengguna', function (Blueprint $table) use ($addProfilePicture, $addNip, $addBidang) {
+            if ($addProfilePicture) {
+                $table->string('profile_picture')->nullable()->after('jabatan');
+            }
+            if ($addNip) {
+                $table->string('nip')->nullable()->after('name');
+            }
+            if ($addBidang) {
+                $table->string('bidang')->nullable()->after('jabatan');
+            }
         });
     }
 
@@ -23,8 +41,23 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('pengguna', function (Blueprint $table) {
-            $table->dropColumn(['profile_picture', 'nip', 'bidang']);
+        if (!Schema::hasTable('pengguna')) {
+            return;
+        }
+
+        $columnsToDrop = [];
+        foreach (['profile_picture', 'nip', 'bidang'] as $column) {
+            if (Schema::hasColumn('pengguna', $column)) {
+                $columnsToDrop[] = $column;
+            }
+        }
+
+        if ($columnsToDrop === []) {
+            return;
+        }
+
+        Schema::table('pengguna', function (Blueprint $table) use ($columnsToDrop) {
+            $table->dropColumn($columnsToDrop);
         });
     }
 };
