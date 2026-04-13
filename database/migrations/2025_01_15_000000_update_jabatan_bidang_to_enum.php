@@ -81,11 +81,18 @@ return new class extends Migration
             }
 
             DB::table('pengguna')
-                ->whereNull('bidang')
-                ->orWhere('bidang', '')
+                ->where('jabatan', 'Kepala BPS')
+                ->update(['bidang' => null]);
+
+            DB::table('pengguna')
+                ->where('jabatan', '!=', 'Kepala BPS')
+                ->where(function ($query) {
+                    $query->whereNull('bidang')->orWhere('bidang', '');
+                })
                 ->update(['bidang' => 'Bagian Umum']);
 
             DB::table('pengguna')
+                ->where('jabatan', '!=', 'Kepala BPS')
                 ->whereNotIn('bidang', $allowedBidang)
                 ->update(['bidang' => 'Bagian Umum']);
         }
@@ -94,7 +101,7 @@ return new class extends Migration
         if (in_array($driver, ['mysql', 'mariadb'], true)) {
             DB::statement("ALTER TABLE `pengguna` MODIFY `jabatan` ENUM('Kepala BPS','Kasubag Umum','Ketua Tim','Anggota Tim') NOT NULL DEFAULT 'Anggota Tim'");
             if ($hasBidang) {
-                DB::statement("ALTER TABLE `pengguna` MODIFY `bidang` ENUM('Tim Humas dan Reformasi Birokrasi','Tim Statistik Sosial','Tim Pengolahan Teknologi Informasi dan Diseminasi','Tim Sensus, Pengembangan Survei, Manajemen Lapangan dan Mitra','Tim Statistik Produksi','Tim Statistik Distribusi, KTIP, dan Harga','Tim Pembinaan Statistik Sektoral dan Penilai Badan (EPSS)','Bagian Umum') NOT NULL DEFAULT 'Bagian Umum'");
+                DB::statement("ALTER TABLE `pengguna` MODIFY `bidang` ENUM('Tim Humas dan Reformasi Birokrasi','Tim Statistik Sosial','Tim Pengolahan Teknologi Informasi dan Diseminasi','Tim Sensus, Pengembangan Survei, Manajemen Lapangan dan Mitra','Tim Statistik Produksi','Tim Statistik Distribusi, KTIP, dan Harga','Tim Pembinaan Statistik Sektoral dan Penilai Badan (EPSS)','Bagian Umum') NULL DEFAULT NULL");
             }
         }
     }
