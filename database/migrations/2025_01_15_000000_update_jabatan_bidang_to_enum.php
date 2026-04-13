@@ -16,10 +16,12 @@ return new class extends Migration
             return;
         }
 
-        if (!Schema::hasColumn('pengguna', 'bidang')) {
+        $hasBidang = Schema::hasColumn('pengguna', 'bidang');
+        if (!$hasBidang) {
             Schema::table('pengguna', function (Blueprint $table) {
                 $table->string('bidang')->nullable()->after('jabatan');
             });
+            $hasBidang = true;
         }
 
         $allowedJabatan = [
@@ -71,7 +73,7 @@ return new class extends Migration
             ->whereNotIn('jabatan', $allowedJabatan)
             ->update(['jabatan' => 'Anggota Tim']);
 
-        if (Schema::hasColumn('pengguna', 'bidang')) {
+        if ($hasBidang) {
             foreach ($bidangMapping as $old => $new) {
                 DB::table('pengguna')
                     ->where('bidang', $old)
@@ -91,7 +93,7 @@ return new class extends Migration
         $driver = DB::getDriverName();
         if (in_array($driver, ['mysql', 'mariadb'], true)) {
             DB::statement("ALTER TABLE `pengguna` MODIFY `jabatan` ENUM('Kepala BPS','Kasubag Umum','Ketua Tim','Anggota Tim') NOT NULL DEFAULT 'Anggota Tim'");
-            if (Schema::hasColumn('pengguna', 'bidang')) {
+            if ($hasBidang) {
                 DB::statement("ALTER TABLE `pengguna` MODIFY `bidang` ENUM('Tim Humas dan Reformasi Birokrasi','Tim Statistik Sosial','Tim Pengolahan Teknologi Informasi dan Diseminasi','Tim Sensus, Pengembangan Survei, Manajemen Lapangan dan Mitra','Tim Statistik Produksi','Tim Statistik Distribusi, KTIP, dan Harga','Tim Pembinaan Statistik Sektoral dan Penilai Badan (EPSS)','Bagian Umum') NOT NULL DEFAULT 'Bagian Umum'");
             }
         }
