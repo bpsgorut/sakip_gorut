@@ -1,11 +1,11 @@
 <aside id="logo-sidebar"
-    class="fixed top-20 left-0 z-40 w-72 h-[calc(100vh-5rem)] transition-transform -translate-x-full bg-white/90 backdrop-blur sm:translate-x-0 border-r border-gray-200 shadow-sm dark:bg-gray-900/90 dark:border-gray-700"
+    class="fixed top-20 left-0 z-40 w-56 h-[calc(100vh-4rem)] transition-transform -translate-x-full bg-white sm:translate-x-0 border-r border-gray-100"
     aria-label="Sidebar">
-    <div class="h-full px-3 py-3 overflow-y-auto">
+    <div class="h-full px-3 py-2 mt-3 overflow-y-auto bg-white">
         <ul class="space-y-1 font-medium">
             <li>
                 <a href="{{ route('dashboard') }}"
-                    class="flex items-center px-3 py-2 text-gray-700 rounded-xl transition-all duration-200 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-800 border-l-2 border-transparent sidebar-menu-item"
+                    class="flex items-center px-3 py-2 text-gray-600 rounded-lg transition-all duration-200 hover:bg-gray-50 group sidebar-menu-item"
                     data-menu="dashboard">
                     <i class="fa-solid fa-house text-red-600 w-5 text-center"></i>
                     <span class="ms-3 text-sm font-medium">Dashboard</span>
@@ -13,34 +13,34 @@
             </li>
 
             <li class="pt-4 pb-1">
-                <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wide dark:text-gray-400">SAKIP</p>
+                <p class="px-3 text-xs font-medium text-gray-400 uppercase">SAKIP</p>
             </li>
 
             <li>
                 <a href="#"
-                    class="flex items-center justify-between px-3 py-2 text-gray-700 rounded-xl transition-all duration-200 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-800 border-l-2 border-transparent sidebar-dropdown-toggle sidebar-menu-item"
+                    class="flex items-center justify-between px-3 py-2 text-gray-600 rounded-lg transition-all duration-200 hover:bg-gray-50 sidebar-dropdown-toggle sidebar-menu-item"
                     data-menu="perencanaan-kinerja">
                     <div class="flex items-center">
-                        <i class="fa-solid fa-lightbulb text-gray-500 w-5 text-center dark:text-gray-400"></i>
+                        <i class="fa-solid fa-lightbulb text-gray-500 w-5 text-center"></i>
                         <span class="ms-3 text-sm">Perencanaan Kinerja</span>
                     </div>
                     <i
-                        class="fa-solid fa-chevron-down text-gray-400 text-xs sidebar-dropdown-icon transition-transform duration-300 dark:text-gray-400"></i>
+                        class="fa-solid fa-chevron-down text-gray-400 text-xs sidebar-dropdown-icon transition-transform duration-300"></i>
                 </a>
                 <ul class="py-1 pl-8 space-y-0.5 text-sm sidebar-dropdown hidden">
                     <li>
                         <a href="{{ route('manajemen.renstra') }}"
-                            class="flex items-center px-3 py-1.5 text-gray-600 rounded-lg transition-colors hover:bg-gray-50 hover:text-red-700 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-red-300 sidebar-submenu-item"
+                            class="flex items-center px-3 py-1.5 text-gray-500 rounded-md transition-colors hover:text-red-600 sidebar-submenu-item"
                             data-submenu="manajemen-renstra">Manajemen Renstra</a>
                     </li>
                     <li>
                         <a href="{{ route('manajemen.rkt') }}"
-                            class="flex items-center px-3 py-1.5 text-gray-600 rounded-lg transition-colors hover:bg-gray-50 hover:text-red-700 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-red-300 sidebar-submenu-item"
+                            class="flex items-center px-3 py-1.5 text-gray-500 rounded-md transition-colors hover:text-red-600 sidebar-submenu-item"
                             data-submenu="manajemen-rkt">Manajemen RKT</a>
                     </li>
                     <li>
                         <a href="{{ route('manajemen.pk') }}"
-                            class="flex items-center px-3 py-1.5 text-gray-600 rounded-lg transition-colors hover:bg-gray-50 hover:text-red-700 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-red-300 sidebar-submenu-item"
+                            class="flex items-center px-3 py-1.5 text-gray-500 rounded-md transition-colors hover:text-red-600 sidebar-submenu-item"
                             data-submenu="manajemen-pk">Manajemen PK</a>
                     </li>
                 </ul>
@@ -48,24 +48,24 @@
 
             <li>
                 <a href="#"
-                    class="flex items-center justify-between px-3 py-2 text-gray-700 rounded-xl transition-all duration-200 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-800 border-l-2 border-transparent sidebar-dropdown-toggle sidebar-menu-item"
+                    class="flex items-center justify-between px-3 py-2 text-gray-600 rounded-lg transition-all duration-200 hover:bg-gray-50 sidebar-dropdown-toggle sidebar-menu-item"
                     data-menu="pengukuran-kinerja">
                     <div class="flex items-center">
-                        <i class="fa-solid fa-scale-balanced text-gray-500 w-5 text-center dark:text-gray-400"></i>
+                        <i class="fa-solid fa-scale-balanced text-gray-500 w-5 text-center"></i>
                         <span class="ms-3 text-sm">Pengukuran Kinerja</span>
                     </div>
                     <i
-                        class="fa-solid fa-chevron-down text-gray-400 text-xs sidebar-dropdown-icon transition-transform duration-300 dark:text-gray-400"></i>
+                        class="fa-solid fa-chevron-down text-gray-400 text-xs sidebar-dropdown-icon transition-transform duration-300"></i>
                 </a>
                 <ul class="py-1 pl-8 space-y-0.5 text-sm sidebar-dropdown hidden">
                     <li>
                         <a href="{{ route('sk.tim.sakip') }}"
-                            class="flex items-center px-3 py-1.5 text-gray-600 rounded-lg transition-colors hover:bg-gray-50 hover:text-red-700 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-red-300 sidebar-submenu-item"
+                            class="flex items-center px-3 py-1.5 text-gray-500 rounded-md transition-colors hover:text-red-600 sidebar-submenu-item"
                             data-submenu="sk-tim-sakip">SK Tim SAKIP</a>
                     </li>
                     <li>
                         <a href="{{ route('fra.index') }}"
-                            class="flex items-center px-3 py-1.5 text-gray-600 rounded-lg transition-colors hover:bg-gray-50 hover:text-red-700 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-red-300 sidebar-submenu-item"
+                            class="flex items-center px-3 py-1.5 text-gray-500 rounded-md transition-colors hover:text-red-600 sidebar-submenu-item"
                             data-submenu="form-rencana-aksi">Form Rencana Aksi</a>
                     </li>
                     @if(Auth::check() && Auth::user()->isSuperAdmin())
@@ -77,12 +77,12 @@
                     @endif
                     <li>
                         <a href="{{ route('unggah.skp') }}"
-                            class="flex items-center px-3 py-1.5 text-gray-600 rounded-lg transition-colors hover:bg-gray-50 hover:text-red-700 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-red-300 sidebar-submenu-item"
+                            class="flex items-center px-3 py-1.5 text-gray-500 rounded-md transition-colors hover:text-red-600 sidebar-submenu-item"
                             data-submenu="unggah-skp">Unggah SKP</a>
                     </li>
                     <li>
                         <a href="{{ route('reward.punishment') }}"
-                            class="flex items-center px-3 py-1.5 text-gray-600 rounded-lg transition-colors hover:bg-gray-50 hover:text-red-700 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-red-300 sidebar-submenu-item"
+                            class="flex items-center px-3 py-1.5 text-gray-500 rounded-md transition-colors hover:text-red-600 sidebar-submenu-item"
                             data-submenu="reward-punishment">Reward & Punishment</a>
                     </li>
                 </ul>
@@ -90,24 +90,24 @@
 
             <li>
                 <a href="#"
-                    class="flex items-center justify-between px-3 py-2 text-gray-700 rounded-xl transition-all duration-200 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-800 border-l-2 border-transparent sidebar-dropdown-toggle sidebar-menu-item"
+                    class="flex items-center justify-between px-3 py-2 text-gray-600 rounded-lg transition-all duration-200 hover:bg-gray-50 sidebar-dropdown-toggle sidebar-menu-item"
                     data-menu="pelaporan-kinerja">
                     <div class="flex items-center">
-                        <i class="fa-solid fa-book-open-reader text-gray-500 w-5 text-center dark:text-gray-400"></i>
+                        <i class="fa-solid fa-book-open-reader text-gray-500 w-5 text-center"></i>
                         <span class="ms-3 text-sm">Pelaporan Kinerja</span>
                     </div>
                     <i
-                        class="fa-solid fa-chevron-down text-gray-400 text-xs sidebar-dropdown-icon transition-transform duration-300 dark:text-gray-400"></i>
+                        class="fa-solid fa-chevron-down text-gray-400 text-xs sidebar-dropdown-icon transition-transform duration-300"></i>
                 </a>
                 <ul class="py-1 pl-8 space-y-0.5 text-sm sidebar-dropdown hidden">
                     <li>
                         <a href="{{ route('manajemen.lakin') }}"
-                            class="flex items-center px-3 py-1.5 text-gray-600 rounded-lg transition-colors hover:bg-gray-50 hover:text-red-700 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-red-300 sidebar-submenu-item"
+                            class="flex items-center px-3 py-1.5 text-gray-500 rounded-md transition-colors hover:text-red-600 sidebar-submenu-item"
                             data-submenu="lakin">LAKIN</a>
                     </li>
                     <li>
                         <a href="{{ route('generate.link') }}"
-                            class="flex items-center px-3 py-1.5 text-gray-600 rounded-lg transition-colors hover:bg-gray-50 hover:text-red-700 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-red-300 sidebar-submenu-item"
+                            class="flex items-center px-3 py-1.5 text-gray-500 rounded-md transition-colors hover:text-red-600 sidebar-submenu-item"
                             data-submenu="generate-link">Generate Permindok</a>
                     </li>
                 </ul>
@@ -142,9 +142,9 @@
             // Function to reset all menu appearances
             function resetMenuAppearance() {
                 menuItems.forEach(menuItem => {
-                    menuItem.classList.remove('bg-red-50', 'text-red-700', 'border-red-600');
+                    menuItem.classList.remove('bg-red-50', 'text-red-600');
                     const icon = menuItem.querySelector('i:not(.sidebar-dropdown-icon)');
-                    if (icon && menuItem.getAttribute('data-menu') !== 'dashboard') {
+                    if (icon && !menuItem.getAttribute('data-menu') === 'dashboard') {
                         icon.classList.remove('text-red-600');
                         icon.classList.add('text-gray-500');
                     }
@@ -157,13 +157,13 @@
                 });
 
                 submenuItems.forEach(submenuItem => {
-                    submenuItem.classList.remove('text-red-700', 'font-medium');
+                    submenuItem.classList.remove('text-red-600', 'font-medium');
                 });
             }
 
             // Function to activate menu item
             function activateMenuItem(menuItem) {
-                menuItem.classList.add('bg-red-50', 'text-red-700', 'border-red-600');
+                menuItem.classList.add('bg-red-50', 'text-red-600');
 
                 // Change icon color
                 const icon = menuItem.querySelector('i:not(.sidebar-dropdown-icon)');
@@ -182,7 +182,7 @@
 
             // Function to activate submenu item
             function activateSubmenuItem(submenuItem) {
-                submenuItem.classList.add('text-red-700', 'font-medium');
+                submenuItem.classList.add('text-red-600', 'font-medium');
             }
 
             // Event listener for dropdown toggles
