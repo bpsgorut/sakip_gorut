@@ -31,7 +31,7 @@
     </style>
 
     <!-- Header Welcome Section -->
-    <div class="container mx-auto py-4">
+    <div class="container mx-auto py-4 px-4 sm:px-6">
         <div class="mb-8 flex flex-col md:flex-row md:items-center md:justify-between">
             <div>
                 <h1 class="text-3xl font-bold text-gray-900">Selamat Datang, {{ $user->name }} 👋</h1>
@@ -55,7 +55,7 @@
         <!-- Metrics Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
             <!-- SAKIP Progress Card -->
-            <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl">
+            <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-sm ring-1 ring-gray-200/70 transition-all duration-300 hover:shadow-md">
                 <div class="flex justify-between items-center">
                     <div>
                         <p class="text-sm text-gray-500 font-medium">Progress SAKIP</p>
@@ -85,7 +85,7 @@
             </div>
 
             <!-- Completed Tasks Card -->
-            <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl">
+            <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-sm ring-1 ring-gray-200/70 transition-all duration-300 hover:shadow-md">
                 <div class="flex justify-between items-center">
                     <div>
                         <p class="text-sm text-gray-500 font-medium">Komponen Selesai</p>
@@ -103,7 +103,7 @@
             </div>
 
             <!-- Upcoming Deadline Card -->
-            <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl">
+            <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-sm ring-1 ring-gray-200/70 transition-all duration-300 hover:shadow-md">
                 <div class="flex justify-between items-center">
                     <div>
                         <p class="text-sm text-gray-500 font-medium">Deadline Terdekat</p>
@@ -128,7 +128,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
             <!-- Progress Section -->
             <div class="lg:col-span-2">
-                <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-md">
+                <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-sm ring-1 ring-gray-200/70">
                     <div class="flex justify-between items-center mb-6">
                         <h2 class="text-xl font-bold text-gray-900">Progress Pelaksanaan SAKIP</h2>
                         <p class="text-sm text-gray-500">Tahun berjalan 2025</p>
@@ -216,7 +216,7 @@
             
             <!-- Timeline Section -->
             <div class="lg:col-span-1">
-                <div class="bg-white rounded-2xl shadow-md h-full overflow-hidden">
+                <div class="bg-white rounded-2xl shadow-sm ring-1 ring-gray-200/70 h-full overflow-hidden">
                     <!-- Header with image -->
                     <div class="relative">
                         <div class="relative h-40 overflow-hidden">

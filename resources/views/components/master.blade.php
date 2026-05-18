@@ -368,7 +368,7 @@
         @media (max-width: 640px) {
             #logo-sidebar {
                 transform: translateX(-100%);
-                width: 224px;
+                width: 288px;
             }
             
             #logo-sidebar.show {
@@ -416,11 +416,11 @@
         @media (min-width: 640px) and (max-width: 768px) {
             #logo-sidebar {
                 transform: translateX(0) !important;
-                width: 224px;
+                width: 288px;
             }
             
             main {
-                margin-left: 224px !important;
+                margin-left: 288px !important;
                 padding: 1.5rem !important;
             }
         }
@@ -428,11 +428,11 @@
         @media (min-width: 768px) {
             #logo-sidebar {
                 transform: translateX(0) !important;
-                width: 224px;
+                width: 288px;
             }
             
             main {
-                margin-left: 224px !important;
+                margin-left: 288px !important;
                 padding: 1.5rem !important;
             }
         }
@@ -877,7 +877,7 @@
     </style>
     @stack('styles')
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="bg-gray-50 font-sans antialiased">
     {{-- Global Loading Overlay --}}
     <div id="globalLoadingOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
         <div class="bg-white rounded-2xl p-8 flex items-center space-x-4 shadow-2xl">
@@ -908,8 +908,8 @@
     <div id="mobileOverlay" class="mobile-overlay"></div>
     
     {{-- Content --}}
-    <div class="pt-16">
-        <main class="p-4 sm:p-6 min-h-[calc(100vh-4rem)] sm:ml-56 transition-all duration-300">
+    <div class="pt-20">
+        <main class="p-4 sm:p-6 min-h-[calc(100vh-5rem)] sm:ml-72 transition-all duration-300">
             <div class="max-w-full overflow-hidden">
                 @yield('content')
             </div>

@@ -70,7 +70,7 @@
                     </div>
 
                     <!-- Kegiatan Table -->
-                    <div class="bg-white rounded-2xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl">
+                    <div class="bg-white rounded-2xl shadow-sm ring-1 ring-gray-200/70 overflow-hidden transition-all duration-300 hover:shadow-md">
                         <div class="overflow-x-auto">
                             <table class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-red-50">
