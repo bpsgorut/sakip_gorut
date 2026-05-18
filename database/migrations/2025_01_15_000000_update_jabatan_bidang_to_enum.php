@@ -32,13 +32,11 @@ return new class extends Migration
         ];
 
         $allowedBidang = [
-            'Tim Humas dan Reformasi Birokrasi',
+            'Tim Metodologi dan Informasi Statistik',
             'Tim Statistik Sosial',
-            'Tim Pengolahan Teknologi Informasi dan Diseminasi',
-            'Tim Sensus, Pengembangan Survei, Manajemen Lapangan dan Mitra',
             'Tim Statistik Produksi',
-            'Tim Statistik Distribusi, KTIP, dan Harga',
-            'Tim Pembinaan Statistik Sektoral dan Penilai Badan (EPSS)',
+            'Tim Statistik Distribusi dan Jasa',
+            'Tim Neraca Wilayah dan Analisis',
             'Bagian Umum',
         ];
 
@@ -101,7 +99,7 @@ return new class extends Migration
         if (in_array($driver, ['mysql', 'mariadb'], true)) {
             DB::statement("ALTER TABLE `pengguna` MODIFY `jabatan` ENUM('Kepala BPS','Kasubag Umum','Ketua Tim','Anggota Tim') NOT NULL DEFAULT 'Anggota Tim'");
             if ($hasBidang) {
-                DB::statement("ALTER TABLE `pengguna` MODIFY `bidang` ENUM('Tim Humas dan Reformasi Birokrasi','Tim Statistik Sosial','Tim Pengolahan Teknologi Informasi dan Diseminasi','Tim Sensus, Pengembangan Survei, Manajemen Lapangan dan Mitra','Tim Statistik Produksi','Tim Statistik Distribusi, KTIP, dan Harga','Tim Pembinaan Statistik Sektoral dan Penilai Badan (EPSS)','Bagian Umum') NULL DEFAULT NULL");
+                DB::statement("ALTER TABLE `pengguna` MODIFY `bidang` ENUM('Tim Metodologi dan Informasi Statistik','Tim Statistik Sosial','Tim Statistik Produksi','Tim Statistik Distribusi dan Jasa','Tim Neraca Wilayah dan Analisis','Bagian Umum') NULL DEFAULT NULL");
             }
         }
     }
