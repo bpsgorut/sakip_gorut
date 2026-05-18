@@ -38,7 +38,7 @@ class PenggunaSeeder extends Seeder
                 'bidang' => 'Tim Statistik Distribusi dan Jasa',
                 'nip' => '199909032023022001',
                 'email' => 'ahdiyaty.rahmi@bps.go.id',
-                'role_id' => 4,
+                'role_id' => 1,
             ],
             [
                 'name' => 'Ainur Rosyidah',
@@ -70,7 +70,7 @@ class PenggunaSeeder extends Seeder
                 'bidang' => 'Tim Statistik Distribusi dan Jasa',
                 'nip' => '200210102024122001',
                 'email' => 'anita.ambarsari@bps.go.id',
-                'role_id' => 4,
+                'role_id' => 1,
             ],
             [
                 'name' => 'Arianti Nur Faizah',
@@ -86,7 +86,7 @@ class PenggunaSeeder extends Seeder
                 'bidang' => 'Bagian Umum',
                 'nip' => '197910312011011006',
                 'email' => 'aziz@bps.go.id',
-                'role_id' => 2,
+                'role_id' => 1,
             ],
             [
                 'name' => 'Bagas Suratno Putra',
@@ -246,7 +246,7 @@ class PenggunaSeeder extends Seeder
                 'bidang' => 'Tim Metodologi dan Informasi Statistik',
                 'nip' => '200210072026032001',
                 'email' => 'seizraaulia@bps.go.id',
-                'role_id' => 4,
+                'role_id' => 1,
             ],
             [
                 'name' => 'Yakob Kuslin',
