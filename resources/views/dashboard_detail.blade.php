@@ -8,13 +8,13 @@
     <!-- Custom Color Theme - Consistent with Dashboard -->
     <style>
         :root {
-            --primary-50: #fff5f5;
-            --primary-100: #fed7d7;
-            --primary-200: #feb2b2;
-            --primary-500: #f56565;
-            --primary-600: #e53e3e;
-            --primary-700: #c53030;
-            --primary-900: #63171b;
+            --primary-50: #faf5ff;
+            --primary-100: #f3e8ff;
+            --primary-200: #e9d5ff;
+            --primary-500: #a855f7;
+            --primary-600: #9333ea;
+            --primary-700: #7e22ce;
+            --primary-900: #581c87;
             --gray-50: #f9fafb;
             --gray-100: #f3f4f6;
             --gray-700: #374151;
@@ -36,15 +36,15 @@
             <div>
                 <h1 class="text-3xl font-bold text-gray-900 mb-2">{{ $komponen_title }}</h1>
                 <div class="flex items-center mt-2">
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mr-2">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800 mr-2">
                         Detail Komponen
                     </span>
                     <p class="text-sm text-gray-500">Informasi detail untuk komponen {{ strtolower($komponen_title) }}</p>
                 </div>
             </div>
             <div class="flex items-center mt-4 md:mt-0 space-x-4">
-                <div class="flex items-center bg-red-50 p-3 rounded-xl shadow-sm">
-                    <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="flex items-center bg-gradient-to-r from-purple-50 to-rose-50 p-3 rounded-xl shadow-sm ring-1 ring-slate-200">
+                    <svg class="w-6 h-6 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
                     </svg>
                     <span class="ml-2 text-gray-700">Tahun {{ date('Y') }}</span>
@@ -66,14 +66,14 @@
                             </div>
                             <h2 class="text-xl font-semibold text-gray-800">{{ $subKomponen }}</h2>
                         </div>
-                        <div class="h-1 w-20 bg-red-500 rounded"></div>
+                        <div class="h-1 w-20 bg-purple-600 rounded"></div>
                     </div>
 
                     <!-- Kegiatan Table -->
                     <div class="bg-white rounded-2xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl">
                         <div class="overflow-x-auto">
                             <table class="min-w-full divide-y divide-gray-200">
-                                <thead class="bg-red-50">
+                                <thead class="bg-slate-50">
                                     <tr>
                                         <th
                                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" style="width: 40%">
@@ -130,7 +130,7 @@
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="flex items-center">
                                                     <div class="w-20 bg-gray-200 rounded-full h-2.5 mr-3">
-                                                        <div class="bg-red-500 h-2.5 rounded-full transition-all duration-300"
+                                                        <div class="bg-purple-600 h-2.5 rounded-full transition-all duration-300"
                                                             style="width: {{ $kegiatan['progress_percentage'] }}%"></div>
                                                     </div>
                                                     <span
@@ -328,7 +328,7 @@
                                                     @endphp
                                                     
                                                     <a href="{{ $detailRoute }}"
-                                                        class="inline-flex items-center px-3 py-1.5 bg-red-100 text-red-700 text-sm font-medium rounded-lg hover:bg-red-200 transition-colors duration-200">
+                                                        class="inline-flex items-center px-3 py-1.5 bg-purple-100 text-purple-700 text-sm font-medium rounded-lg hover:bg-purple-200 transition-colors duration-200">
                                                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
@@ -365,7 +365,7 @@
         <!-- Back Button -->
         <div class="mt-8">
             <a href="{{ route('dashboard') }}"
-                class="inline-flex items-center px-6 py-3 bg-red-600 text-white text-sm font-medium rounded-xl hover:bg-red-700 transition-all duration-200 shadow-md hover:shadow-lg">
+                class="inline-flex items-center px-6 py-3 bg-purple-600 text-white text-sm font-medium rounded-xl hover:bg-purple-700 transition-all duration-200 shadow-md hover:shadow-lg">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18">
                     </path>

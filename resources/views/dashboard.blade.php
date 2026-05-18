@@ -8,13 +8,13 @@
     <!-- Custom Color Theme -->
     <style>
         :root {
-            --primary-50: #fff5f5;
-            --primary-100: #fed7d7;
-            --primary-200: #feb2b2;
-            --primary-500: #f56565;
-            --primary-600: #e53e3e;
-            --primary-700: #c53030;
-            --primary-900: #63171b;
+            --primary-50: #faf5ff;
+            --primary-100: #f3e8ff;
+            --primary-200: #e9d5ff;
+            --primary-500: #a855f7;
+            --primary-600: #9333ea;
+            --primary-700: #7e22ce;
+            --primary-900: #581c87;
             --gray-50: #f9fafb;
             --gray-100: #f3f4f6;
             --gray-700: #374151;
@@ -36,15 +36,15 @@
             <div>
                 <h1 class="text-3xl font-bold text-gray-900">Selamat Datang, {{ $user->name }} 👋</h1>
                 <div class="flex items-center mt-2">
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mr-2">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800 mr-2">
                         {{ $user->getRoleDisplayName() }}
                     </span>
                     <p class="text-sm text-gray-500">{{ $user->jabatan }}</p>
                 </div>
             </div>
             <div class="flex items-center mt-4 md:mt-0 space-x-4">
-                <div class="flex items-center bg-red-50 p-3 rounded-xl shadow-sm">
-                    <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="flex items-center bg-gradient-to-r from-purple-50 to-rose-50 p-3 rounded-xl shadow-sm ring-1 ring-slate-200">
+                    <svg class="w-6 h-6 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
                     <span class="ml-2 text-gray-700">{{ date('d F Y') }}</span>
@@ -55,7 +55,7 @@
         <!-- Metrics Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
             <!-- SAKIP Progress Card -->
-            <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl">
+            <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl ring-1 ring-slate-100">
                 <div class="flex justify-between items-center">
                     <div>
                         <p class="text-sm text-gray-500 font-medium">Progress SAKIP</p>
@@ -65,12 +65,12 @@
                         <svg class="w-full h-full" viewBox="0 0 36 36">
                             <!-- Background Circle -->
                             <circle cx="18" cy="18" r="16" fill="none" 
-                                class="stroke-current text-red-100" 
+                                class="stroke-current text-purple-100" 
                                 stroke-width="2.5"></circle>
                             
                             <!-- Progress Circle -->
                             <circle cx="18" cy="18" r="16" fill="none" 
-                                class="stroke-current text-red-500" 
+                                class="stroke-current text-purple-600" 
                                 stroke-width="2.5"
                                 stroke-dasharray="100.5" 
                                 stroke-dashoffset="{{ 100.5 - ($overall_progress * 100.5 / 100) }}"
@@ -163,10 +163,10 @@
                         
                         <!-- Pengukuran Kinerja -->
                         <a href="{{ route('dashboard.detail', ['komponen' => 'pengukuran']) }}" class="block">
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-red-50 rounded-xl group hover:bg-red-100 transition-colors cursor-pointer">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-rose-50 rounded-xl group hover:bg-rose-100 transition-colors cursor-pointer">
                                 <div class="flex items-center space-x-4 mb-3 sm:mb-0">
                                     <div class="bg-white p-3 rounded-lg shadow-sm">
-                                        <span class="text-red-600 font-bold">2</span>
+                                        <span class="text-rose-600 font-bold">2</span>
                                     </div>
                                     <div>
                                         <h3 class="font-medium text-gray-900">Pengukuran Kinerja</h3>
@@ -175,9 +175,9 @@
                                 </div>
                                 <div class="flex items-center space-x-4">
                                     <div class="w-24 h-2 bg-gray-200 rounded-full">
-                                        <div class="h-2 bg-red-500 rounded-full" style="width: {{ $pengukuran_progress }}%"></div>
+                                        <div class="h-2 bg-rose-500 rounded-full" style="width: {{ $pengukuran_progress }}%"></div>
                                     </div>
-                                    <div class="text-red-600 hover:text-red-800 transition-colors">
+                                    <div class="text-rose-600 hover:text-rose-800 transition-colors">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                                         </svg>
@@ -219,9 +219,9 @@
                 <div class="bg-white rounded-2xl shadow-md h-full overflow-hidden">
                     <!-- Header with image -->
                     <div class="relative">
-                        <div class="relative h-40 overflow-hidden">
+                    <div class="relative h-40 overflow-hidden">
                             <img class="w-full h-full object-cover" src="img/bg1.jpg" alt="Reminder background">
-                            <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-red-800 opacity-60"></div>
+                        <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-rose-700 opacity-60"></div>
                         </div>
                         
                         <!-- Card Content Overlay -->
